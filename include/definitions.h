@@ -16,16 +16,28 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 		Distance_from_Point_to_Point
 	};
 
-	enum Color : unsigned
+}
+namespace C
+{
+	enum VColor : unsigned
 	{
 		Selected = 0x3560d6,
 		Default = 0x000000,
+		Black = 0x000000,
+		White = 0xffffff,
+		LightRed = 0xffaaaa,
 		Red = 0xff0000,
+		DarkRed = 0xaa0000,
+		LightGreen = 0xaaffaa,
 		Green = 0x00ff00,
-		Blue = 0x0000ff
+		DarkGreen = 0x00aa00,
+		LightBlue = 0xaaaaff,
+		Blue = 0x0000ff,
+		DarkBlue = 0x0000aa,
+		LightGray = 0xdddddd,
+		Gray = 0x888888,
+		DarkGray = 444444
 	};
-
-
 }
 
 #endif
