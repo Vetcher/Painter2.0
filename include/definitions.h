@@ -15,7 +15,7 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 		Collector = 0,
 		Distance_from_Point_to_Point
 	};
-
+	const char EMPTYTEXT[] = "";
 }
 namespace C
 {

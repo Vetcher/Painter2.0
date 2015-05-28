@@ -107,6 +107,63 @@ public:
 		return _id != static_cast<uint>(i);
 	}
 };
+
+class flag
+{
+private:
+	unsigned char _body;
+public:
+	flag()
+	{
+		_body = 0;
+	}
+	~flag();
+	flag(int a)
+	{
+		_body = a;
+	}
+	bool _0() const
+	{
+		return _body & 1 ? true : false;
+	}
+	bool _1() const
+	{
+		return _body & 2 ? true : false;
+	}
+	bool _2() const
+	{
+		return _body & 4 ? true : false;
+	}
+	bool _3() const
+	{
+		return _body & 8 ? true : false;
+	}
+	bool _4() const
+	{
+		return _body & 16 ? true : false;
+	}
+	bool _5() const
+	{
+		return _body & 32 ? true : false;
+	}
+	bool _6() const
+	{
+		return _body & 64 ? true : false;
+	}
+	bool _7() const
+	{
+		return _body & 128 ? true : false;
+	}
+	bool operator==(const flag& f) const
+	{
+		return _body == f._body;
+	}
+	bool operator!=(const flag& f) const
+	{
+		return _body == f._body;
+	}
+};
+
 #undef ldoub
 #undef uint
 #endif

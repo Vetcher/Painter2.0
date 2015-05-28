@@ -23,6 +23,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\lib\GlobalStorage.cpp" />
     <ClCompile Include="..\lib\main.cpp" />
     <ClCompile Include="..\lib\mainwindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
@@ -63,6 +64,7 @@
     </CustomBuild>
     <ClInclude Include="..\include\base.h" />
     <ClInclude Include="..\include\definitions.h" />
+    <ClInclude Include="..\include\GlobalStorage.h" />
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
