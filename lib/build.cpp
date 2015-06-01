@@ -1,8 +1,5 @@
 #include "build.h"
 
-#define uint unsigned
-#define ldoub long double
-
 bool Recalculator::BuildFigureGoldMethod()
 {
 	// small value

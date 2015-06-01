@@ -1,19 +1,17 @@
 #pragma once
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
-#include <QtWidgets/QMainWindow>
-#include "ui_mainwindow.h"
+#include "QtWidgets/qgraphicsview.h"
+#include "qevent.h"
+#include "qgraphicsscene.h"
+#include "qpainter.h"
 #include "base.h"
-#include "qmovie.h"
 
-class Mainwindow : public QMainWindow, public IInterface
+class GraphicsSpace : public QGraphicsView, public IInterface
 {
 	Q_OBJECT
-
 public:
-	Mainwindow(QWidget *parent = 0);
-	~Mainwindow();
+	explicit GraphicsSpace(QWidget *parent = 0);
+	~GraphicsSpace();
 
 // IInterface functions
 	virtual void Draw_Point(uint, ldoub, ldoub, flag, Color);
@@ -22,14 +20,14 @@ public:
 	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, flag, Color);
 	virtual void Write_Constraint(uint, V::TConstraint);
 // ------------------------
-	void LoadCircleStart();
-	void LoadCircleStop();
 
-	void WriteError(const char*, const char*);
-
+public slots:
+	void mousePressEvent();
+	void mouseMoveEvent(QMouseEvent* event);
+signals:
+	void clickx(double);
+	void clicky(double);
 private:
-	Ui::MainwindowClass ui;
-	QMovie* loadcircle;
+	QGraphicsScene mainscene;
+	V::Tool _current_tool;
 };
-
-#endif // MAINWINDOW_H

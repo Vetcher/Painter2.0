@@ -3,8 +3,6 @@
 #include "base.h"
 #include <vector>
 
-#define uint unsigned
-#define ldoub long double
 
 class Recalculator : IInterface
 {
@@ -25,6 +23,3 @@ public:
 
 	void Calculate();
 };
-
-#undef ldoub
-#undef uint

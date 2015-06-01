@@ -4,16 +4,18 @@
 #include "mainwindow.h"
 #include <map>
 
-#define uint unsigned
-#define ldoub long double
+typedef std::pair<uint, ObjectBase*> objectPair;
+typedef std::pair<ldoub*, bool> paraPair;
+typedef std::map<uint, ObjectBase*> SofObjects;
 
 class GlobalStorage
 {
 private:
 	uint _last_id;
-	std::map<uint, ObjectBase*> _storage_of_objects;
+	SofObjects _storage_of_objects;
+	std::map<ldoub*, bool> _parameters;
 
-	ID _generate_id();
+	uint _generate_id();
 public:
 	GlobalStorage();
 	~GlobalStorage();
@@ -21,9 +23,9 @@ public:
 	void Clear();
 	//void ReturnBack();
 
-	bool Upload_All_To(const IInterface&);
-	bool GetObject(const IInterface&, uint);
-	bool GetConstraint(const IInterface&, uint);
+	bool Upload_All_To(IInterface&);
+	bool GetObject(IInterface&, uint);
+	bool GetConstraint(IInterface&, uint);
 
 	bool SelectObject(uint id);
 	bool SelectObject(ldoub x, ldoub y);
@@ -34,7 +36,3 @@ public:
 	ID NewLine(ldoub a, ldoub b, ldoub c, flag fixed, Color color = V::Default, ID id = 0);
 	ID NewCircle(uint point_id, ldoub r, flag fixed, Color color = V::Default, ID id = 0);
 };
-
-#undef uint
-#undef ldoub
-

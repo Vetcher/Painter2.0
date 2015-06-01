@@ -2,16 +2,9 @@
 #include "qmessagebox.h"
 #include "qstring.h"
 
-#define uint unsigned
-#define ldoub long double
-
 Mainwindow::Mainwindow(QWidget *parent)
 	: QMainWindow(parent)
 {
-	/*QDialog a;
-	a.setWindowTitle(QString().setNum((double)std::numeric_limits<ldoub>::min()));
-	a.exec();*/
-	// -----
 	// load user graphics interface
 	ui.setupUi(this);
 	loadcircle = new QMovie(":/icons/loader.gif");
@@ -51,19 +44,19 @@ Mainwindow::~Mainwindow()
 	delete loadcircle;
 }
 
-void Mainwindow::Draw_Point(uint, ldoub, ldoub, flag, V::Color)
+void Mainwindow::Draw_Point(uint, ldoub, ldoub, flag, Color)
 {
 
 }
-void Mainwindow::Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color)
+void Mainwindow::Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, Color)
 {
 
 }
-void Mainwindow::Draw_Circle(uint, ldoub, ldoub, ldoub, flag, V::Color)
+void Mainwindow::Draw_Circle(uint, ldoub, ldoub, ldoub, flag, Color)
 {
 
 }
-void Mainwindow::Draw_Line(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color)
+void Mainwindow::Draw_Line(uint, ldoub, ldoub, ldoub, flag, Color)
 {
 
 }
@@ -72,6 +65,3 @@ void Mainwindow::Write_Constraint(uint, V::TConstraint)
 {
 
 }
-
-#undef uint
-#undef ldoub

@@ -63,6 +63,19 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="GraphicsSpace" name="graphicsView">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>100</y>
+         <width>256</width>
+         <height>192</height>
+        </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </item>
     <item>
@@ -310,8 +323,50 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="mainresource.qrc"/>
- </resources>
- <connections/>
+ <customwidgets>
+  <customwidget>
+   <class>GraphicsSpace</class>
+   <extends>QGraphicsView</extends>
+   <header>GraphicsSpace.h</header>
+   <slots>
+    <signal>clickx(double)</signal>
+    <signal>clicky(double)</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>graphicsView</sender>
+   <signal>clicky(double)</signal>
+   <receiver>labelY</receiver>
+   <slot>setNum(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>294</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>100</x>
+     <y>511</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>graphicsView</sender>
+   <signal>clickx(double)</signal>
+   <receiver>labelX</receiver>
+   <slot>setNum(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>185</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

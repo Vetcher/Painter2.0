@@ -2,17 +2,21 @@
 #ifndef PI
 #define PI 3.1415926535897932384
 
-long double length(long double x1, long double y1, long double x2, long double y2);
+typedef unsigned uint;
+typedef long double ldoub;
+
+ldoub length(ldoub x1, ldoub y1, ldoub x2, ldoub y2);
 
 
 namespace V // identificator for all basic and global classes/enums/constants e.t.c.
 {
-	enum TConstraint : unsigned
+	const double scenewidth = 3000;
+	enum TConstraint : uint
 	{
 		Collector = 0,
 		Distance_from_Point_to_Point
 	};
-	enum TObject : unsigned
+	enum TObject : uint
 	{
 		NOTHING = 0,
 		POINT,
@@ -21,7 +25,7 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 		LINE
 	};
 	const char EMPTYTEXT[] = "";
-	enum Color : unsigned
+	enum Color : uint
 	{
 		Selected = 0x3560d6,
 		Default = 0x000000,
@@ -39,6 +43,11 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 		LightGray = 0xdddddd,
 		Gray = 0x888888,
 		DarkGray = 444444
+	};
+	enum Tool : uint
+	{
+		toolSelection = 0,
+		toolDrawPoint
 	};
 	class Error
 	{

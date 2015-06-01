@@ -17,17 +17,17 @@ public:
 	{
 		if (c) _storage.push_back(c);
 	}
-	virtual long double error()
+	virtual ldoub error()
 	{
-		double err = 0;
-		for (unsigned k = 0; k < _storage.size(); ++k)
+		ldoub err = 0;
+		for (uint k = 0; k < _storage.size(); ++k)
 			err += _storage[k]->error();
 		return err;
 	};
-	virtual long double differential(long double* par)
+	virtual ldoub differential(ldoub* par)
 	{
-		double res = 0;
-		for (unsigned k = 0; k < _storage.size(); ++k)
+		ldoub res = 0;
+		for (uint k = 0; k < _storage.size(); ++k)
 			res += _storage[k]->differential(par);
 		return res;
 	}
@@ -35,7 +35,7 @@ public:
 	{
 		return V::Collector;
 	}
-	virtual long double value() const
+	virtual ldoub value() const
 	{
 		return NAN;
 	}

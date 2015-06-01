@@ -4,8 +4,6 @@
 
 #include "definitions.h"
 #include <limits>
-#define uint unsigned
-#define ldoub long double
 
 class Color
 {
@@ -120,6 +118,10 @@ public:
 	{
 		_body = t0 | t1 << 1 | t2 << 2 | t3 << 3 | t4 << 4 | t5 << 5 | t6 << 6 | t7 << 7;
 	}
+	void operator=(int a)
+	{
+		_body = a;
+	}
 	bool _0() const
 	{
 		return _body & 1 ? true : false;
@@ -173,10 +175,11 @@ public:
 
 class IInterface
 {
-	virtual void Draw_Point(uint, ldoub, ldoub, flag, V::Color) = 0;
-	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color) = 0;
-	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, flag, V::Color) = 0;
-	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color) = 0;
+public:
+	virtual void Draw_Point(uint, ldoub, ldoub, flag, Color) = 0;
+	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
 	virtual void Write_Constraint(uint, V::TConstraint) = 0;
 };
 
@@ -228,6 +231,4 @@ public:
 	virtual V::TObject type() const = 0;
 };
 
-#undef ldoub
-#undef uint
 #endif

@@ -2,10 +2,7 @@
 
 #include "base.h"
 
-#define uint unsigned
-#define ldoub long double
-
-class Point : ObjectBase
+class Point : public ObjectBase
 {
 public:
 	ldoub* x;
@@ -25,7 +22,7 @@ public:
 	}
 };
 
-class Segment : ObjectBase
+class Segment : public ObjectBase
 {
 public:
 	Point* point1;
@@ -45,13 +42,13 @@ public:
 	{
 
 	}
-	virtual V::TObject objectType() const
+	virtual V::TObject type() const
 	{
 		return V::SEGMENT;
 	}
 };
 
-class Circle : ObjectBase
+class Circle :public ObjectBase
 {
 public:
 	Point* point;
@@ -71,13 +68,13 @@ public:
 		point = _point;
 		radius = _radius;
 	}
-	virtual V::TObject objectType() const
+	virtual V::TObject type() const
 	{
 		return V::CIRCLE;
 	}
 };
 
-class Line : ObjectBase
+class Line : public ObjectBase
 {
 public:
 	ldoub* A;
@@ -92,12 +89,8 @@ public:
 	{
 
 	}
-	virtual V::TObject objectType() const
+	virtual V::TObject type() const
 	{
 		return V::LINE;
 	}
 };
-
-
-#undef ldoub
-#undef uint
