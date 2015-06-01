@@ -1,3 +1,4 @@
+#pragma once
 #ifndef BASE_H
 #define BASE_H
 
@@ -13,7 +14,7 @@ private:
 public:
 	Color()
 	{
-		value = C::Default;
+		value = V::Default;
 	}
 	Color(uint c)
 	{
@@ -23,7 +24,14 @@ public:
 	{
 		value = r << 16 | g << 8 | b;
 	}
-	~Color();
+	~Color()
+	{
+		
+	}
+	void operator=(uint a)
+	{
+		value = a;
+	}
 	uint color() const
 	{
 		return value;
@@ -40,24 +48,6 @@ public:
 	{
 		return value & 0xFF;
 	}
-};
-
-class IConstraint
-{
-public:
-	virtual ldoub error() = 0;
-	virtual ldoub differential() = 0;
-	virtual V::TConstraint type() const = 0;
-	virtual ldoub value() const = 0;
-};
-
-class IInterface
-{
-	virtual void Draw_Point(uint, ldoub, ldoub, Color) = 0;
-	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, Color) = 0;
-	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, Color) = 0;
-	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, ldoub, Color) = 0;
-	virtual void Write_Constraint(uint, V::TConstraint) = 0;
 };
 
 class ID
@@ -117,10 +107,18 @@ public:
 	{
 		_body = 0;
 	}
-	~flag();
-	flag(int a)
+	~flag()
+	{
+
+	}
+	flag(unsigned char a)
 	{
 		_body = a;
+	}
+	flag(bool t0, bool t1 = false, bool t2 = false, bool t3 = false,
+		  bool t4 = false, bool t5 = false, bool t6 = false, bool t7 = false)
+	{
+		_body = t0 | t1 << 1 | t2 << 2 | t3 << 3 | t4 << 4 | t5 << 5 | t6 << 6 | t7 << 7;
 	}
 	bool _0() const
 	{
@@ -162,6 +160,72 @@ public:
 	{
 		return _body == f._body;
 	}
+};
+
+class IConstraint
+{
+public:
+	virtual ldoub error() = 0;
+	virtual ldoub differential(ldoub* arg) = 0;
+	virtual V::TConstraint type() const = 0;
+	virtual ldoub value() const = 0;
+};
+
+class IInterface
+{
+	virtual void Draw_Point(uint, ldoub, ldoub, flag, V::Color) = 0;
+	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color) = 0;
+	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, flag, V::Color) = 0;
+	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, ldoub, flag, V::Color) = 0;
+	virtual void Write_Constraint(uint, V::TConstraint) = 0;
+};
+
+/*class Igui : IInterface
+{
+	virtual void Draw_Point(uint, ldoub, ldoub, Color) = 0;
+	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, Color) = 0;
+	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, Color) = 0;
+	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, ldoub, Color) = 0;
+
+	virtual void Write_Point(uint, ldoub, ldoub, flag, Color) = 0;
+	virtual void Write_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Write_Circle(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Write_Line(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Write_Constraint(uint, V::TConstraint) = 0;
+};*/
+
+class ObjectBase
+{
+private:
+	bool _select;
+	bool _visible;
+public:
+	Color color;
+	ID id;
+	ObjectBase()
+	{
+		_select = false;
+		_visible = false;
+	}
+	virtual ~ObjectBase()
+	{
+
+	}
+	bool select() const
+	{
+		return _select;
+	}
+	bool changeSelect()
+	{
+		_select = !_select;
+		return _select;
+	}
+	bool changeSelect(bool stat)
+	{
+		_select = stat;
+		return _select;
+	}
+	virtual V::TObject type() const = 0;
 };
 
 #undef ldoub

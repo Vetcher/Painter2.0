@@ -1,12 +1,9 @@
+#pragma once
 #ifndef PI
 #define PI 3.1415926535897932384
 
-#include <cmath>
+long double length(long double x1, long double y1, long double x2, long double y2);
 
-long double length(long double x1, long double y1, long double x2, long double y2)
-{
-	return sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
-}
 
 namespace V // identificator for all basic and global classes/enums/constants e.t.c.
 {
@@ -15,11 +12,16 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 		Collector = 0,
 		Distance_from_Point_to_Point
 	};
+	enum TObject : unsigned
+	{
+		NOTHING = 0,
+		POINT,
+		SEGMENT,
+		CIRCLE,
+		LINE
+	};
 	const char EMPTYTEXT[] = "";
-}
-namespace C
-{
-	enum VColor : unsigned
+	enum Color : unsigned
 	{
 		Selected = 0x3560d6,
 		Default = 0x000000,
@@ -37,6 +39,20 @@ namespace C
 		LightGray = 0xdddddd,
 		Gray = 0x888888,
 		DarkGray = 444444
+	};
+	class Error
+	{
+	private:
+		const char* _message;
+	public:
+		Error(const char* s)
+		{
+			_message = s;
+		}
+		const char* what() const
+		{
+			return _message;
+		}
 	};
 }
 
