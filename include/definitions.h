@@ -63,6 +63,6 @@ namespace V // identificator for all basic and global classes/enums/constants e.
 			return _message;
 		}
 	};
-}
+};
 
 #endif

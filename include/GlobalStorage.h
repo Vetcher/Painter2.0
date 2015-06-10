@@ -1,21 +1,26 @@
 #pragma once
 
 #include "base.h"
-#include "mainwindow.h"
 #include <map>
+#include "definitions.h"
+#include <utility>
 
-typedef std::pair<uint, ObjectBase*> objectPair;
-typedef std::pair<ldoub*, bool> paraPair;
-typedef std::map<uint, ObjectBase*> SofObjects;
+
 
 class GlobalStorage
 {
 private:
+	typedef std::pair<uint, ObjectBase*> objectPair;
+	typedef std::pair<ldoub*, bool> paraPair;
+	typedef std::map<uint, ObjectBase*> SofObjects;
+
 	uint _last_id;
 	SofObjects _storage_of_objects;
 	std::map<ldoub*, bool> _parameters;
+	SofObjects _selected_objects;
 
 	uint _generate_id();
+	bool _isInArea(ldoub x, ldoub y, ldoub x1, ldoub y1, ldoub x2, ldoub y2);
 public:
 	GlobalStorage();
 	~GlobalStorage();
@@ -28,7 +33,8 @@ public:
 	bool GetConstraint(IInterface&, uint);
 
 	bool SelectObject(uint id);
-	bool SelectObject(ldoub x, ldoub y);
+	uint SelectObject(ldoub x, ldoub y);
+	void SelectObjects(ldoub x1, ldoub y1, ldoub x2, ldoub y2);
 	void ClearSelection();
 
 	ID NewPoint(ldoub x, ldoub y, flag fixed, Color color = V::Default, ID id = 0);

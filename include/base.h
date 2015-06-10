@@ -176,10 +176,10 @@ public:
 class IInterface
 {
 public:
-	virtual void Draw_Point(uint, ldoub, ldoub, flag, Color) = 0;
-	virtual void Draw_Segment(uint, ldoub, ldoub, ldoub, ldoub, flag, Color) = 0;
-	virtual void Draw_Circle(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
-	virtual void Draw_Line(uint, ldoub, ldoub, ldoub, flag, Color) = 0;
+	virtual void Draw_Point(uint, double, double, flag, Color) = 0;
+	virtual void Draw_Segment(uint, double, double, double, double, flag, Color) = 0;
+	virtual void Draw_Circle(uint, double, double, double, flag, Color) = 0;
+	virtual void Draw_Line(uint, double, double, double, flag, Color) = 0;
 	virtual void Write_Constraint(uint, V::TConstraint) = 0;
 };
 
@@ -208,7 +208,7 @@ public:
 	ObjectBase()
 	{
 		_select = false;
-		_visible = false;
+		_visible = true;
 	}
 	virtual ~ObjectBase()
 	{

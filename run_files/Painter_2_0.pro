@@ -13,6 +13,7 @@ INCLUDEPATH += ./GeneratedFiles \
     ./GeneratedFiles/Debug \
     ../include
 DEPENDPATH += .
+QMAKE_CXXFLAGS += -std=c++11
 MOC_DIR += ./GeneratedFiles/debug
 OBJECTS_DIR += debug
 UI_DIR += ./GeneratedFiles

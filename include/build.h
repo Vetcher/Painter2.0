@@ -2,7 +2,7 @@
 
 #include "base.h"
 #include <vector>
-
+#include <cmath>
 
 class Recalculator : IInterface
 {
